@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forum Format Guide (BBCode)</title>
+  <!-- Link to the Exwayer font -->
+  <link href="https://fonts.googleapis.com/css2?family=Exwayer&display=swap" rel="stylesheet">
+  <style>
+    * {
+      user-select: none; /* Prevent text selection globally */
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .heading {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .approved { color: #61bd6d; }
+    .rejected { color: #b8312f; }
+    .reviewing { color: #fba026; }
+    .pov { color: #2969b0; }
+    .closed { color: #fba026; }
+
+    .bbcode {
+      white-space: pre-wrap;
+      font-family: Consolas, monospace;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover .copy-btn {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .copy-success {
+      color: #61bd6d;
+      font-size: 0.8rem;
+      position: absolute;
+      top: 3.2rem;
+      right: 1.2rem;
+      display: none;
+    }
+
+    .rainbow-text {
+      font-weight: bold;
+      animation: rainbow 6s linear infinite;
+      font-family: 'Exwayer', sans-serif;
+    }
+
+    @keyframes rainbow {
+      0% { color: rgb(255, 0, 0); }
+      16% { color: rgb(255, 165, 0); }
+      33% { color: rgb(255, 255, 0); }
+      50% { color: rgb(0, 128, 0); }
+      66% { color: rgb(0, 0, 255); }
+      83% { color: rgb(75, 0, 130); }
+      100% { color: rgb(238, 130, 238); }
+    }
+
+    .credit {
+      font-family: 'Exwayer', sans-serif;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 3rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false">
+  <div class="container">
+
+    <!-- Rejected -->
+    <div class="card">
+      <div class="heading rejected">Rejected</div>
+      <button class="copy-btn" onclick="copyText('text1', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text1">
+[CENTER][B][COLOR=rgb(184, 49, 47)]Rejected[/COLOR][/B]
+
+Incorrect format  
+Title does not have ID  
+Please Refer to the [URL=https://forum.play-crystalrp.com/threads/rules-for-filing-a-complaint.35/']Rules for Filing a complaint[/URL]  
+And file a new complaint  
+[/CENTER]
+      </div>
+    </div>
+
+    <!-- Approved -->
+    <div class="card">
+      <div class="heading approved">Approved</div>
+      <button class="copy-btn" onclick="copyText('text2', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text2">
+[CENTER][B][COLOR=rgb(97, 189, 109)]Approved[/COLOR][/B]
+
+ID xxx will receive a punishment for xxx  
+[/CENTER]
+      </div>
+    </div>
+
+    <!-- Rejected 2 -->
+    <div class="card">
+      <div class="heading rejected">Rejected</div>
+      <button class="copy-btn" onclick="copyText('text3', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text3">
+[CENTER][B][COLOR=rgb(184, 49, 47)]Rejected[/COLOR][/B]
+
+This is not RDM, you are in ghetto  
+[/CENTER]
+      </div>
+    </div>
+
+    <!-- POV -->
+    <div class="card">
+      <div class="heading pov">Requesting POV</div>
+      <button class="copy-btn" onclick="copyText('text4', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text4">
+[CENTER][B][COLOR=rgb(41, 105, 176)]Requesting POV[/COLOR][/B]
+
+ID xxx has 6 hours to provide POV of this event
+
+[B]Provide proper POV, not just the shot![/B]  
+[/CENTER]
+      </div>
+    </div>
+
+    <!-- Closed -->
+    <div class="card">
+      <div class="heading closed">Closed</div>
+      <button class="copy-btn" onclick="copyText('text5', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text5">
+[CENTER][B][COLOR=rgb(251, 160, 38)]Closed[/COLOR][/B]
+
+Wrong section, this section is EN#3  
+[/CENTER]
+      </div>
+    </div>
+
+    <!-- Reviewing -->
+    <div class="card">
+      <div class="heading reviewing">Reviewing</div>
+      <button class="copy-btn" onclick="copyText('text6', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text6">
+[CENTER][B][COLOR=rgb(251, 160, 38)]Reviewing[/COLOR][/B][/CENTER]
+      </div>
+    </div>
+
+    <!-- Locked -->
+    <div class="card">
+      <div class="heading">Locked</div>
+      <button class="copy-btn" onclick="copyText('text7', this)">Copy to Clipboard</button>
+      <div class="copy-success">Copied!</div>
+      <div class="bbcode" id="text7">
+[CENTER][B]Locked for curator of xxx[/B][/CENTER]
+      </div>
+    </div>
+
+    <!-- Signature -->
+    <div class="card">
+      <div class="heading">Signature</div>
+      <div class="bbcode" id="text8">
+Signature
+
+Click here to go to signature page  
+And change your signature to this  
+(you can copy it, and it will copy the hyperlink on it’s own)
+
+If you feel the punishment the administrator issued is incorrect, feel free to file an Admin complaint
+
+Note: Admin complaint link is for EN#1!!
+
+<span class="rainbow-text">If you have questions, refer to any admin for help, if you are not sure about something, it's always better to ask rather than making a mistake</span>
+      </div>
+    </div>
+
+    <!-- Credit -->
+    <div class="credit">Created by Paradox Maddy</div>
+
+  </div>
+
+  <script>
+    function copyText(id, btn) {
+      const el = document.getElementById(id);
+      const tempInput = document.createElement('textarea');
+      tempInput.value = el.innerText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const successMsg = btn.nextElementSibling;
+      successMsg.style.display = 'block';
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
