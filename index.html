@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forum Format Guide (BBCode)</title>
-  <!-- Link to the Exwayer font -->
   <link href="https://fonts.googleapis.com/css2?family=Exwayer&display=swap" rel="stylesheet">
   <style>
     * {
-      user-select: none; /* Prevent text selection globally */
+      user-select: none;
     }
 
     body {
@@ -88,7 +87,8 @@
       display: none;
     }
 
-    .rainbow-text {
+    .rainbow-text,
+    .rainbow-link {
       font-weight: bold;
       animation: rainbow 6s linear infinite;
       font-family: 'Exwayer', sans-serif;
@@ -104,12 +104,31 @@
       100% { color: rgb(238, 130, 238); }
     }
 
+    .rainbow-link {
+      display: inline-block;
+      background: #000;
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      margin: 0.5rem 0;
+    }
+
+    .rainbow-link:hover {
+      background-color: #222;
+      text-decoration: underline;
+    }
+
     .credit {
       font-family: 'Exwayer', sans-serif;
       font-size: 0.9rem;
       color: #888;
       margin-top: 3rem;
       font-weight: bold;
+    }
+
+    .selectable {
+      user-select: text !important;
     }
   </style>
 </head>
@@ -126,7 +145,7 @@
 
 Incorrect format  
 Title does not have ID  
-Please Refer to the [URL=https://forum.play-crystalrp.com/threads/rules-for-filing-a-complaint.35/']Rules for Filing a complaint[/URL]  
+Please Refer to the [URL=https://forum.play-crystalrp.com/threads/rules-for-filing-a-complaint.35/]Rules for Filing a complaint[/URL]  
 And file a new complaint  
 [/CENTER]
       </div>
@@ -210,23 +229,25 @@ Wrong section, this section is EN#3
     <div class="card">
       <div class="heading">Signature</div>
       <div class="bbcode" id="text8">
-Signature
+Signature<br><br>
+Click 
+<a href="https://forum.play-crystalrp.com/account/signature" target="_blank" class="rainbow-link">HERE</a> 
+to go to the signature page  
+and change your signature to this  
+(you can copy it, and it will copy the hyperlink on its own)<br><br>
 
-Click here to go to signature page  
-And change your signature to this  
-(you can copy it, and it will copy the hyperlink on it’s own)
+<span class="selectable">If you feel the punishment the administrator issued is incorrect, feel free to file an Admin complaint</span><br><br>
 
-If you feel the punishment the administrator issued is incorrect, feel free to file an Admin complaint
+Note: Admin complaint link is for EN#1!!<br><br>
 
-Note: Admin complaint link is for EN#1!!
-
-<span class="rainbow-text">If you have questions, refer to any admin for help, if you are not sure about something, it's always better to ask rather than making a mistake</span>
+<span class="rainbow-text">
+If you have questions, refer to any admin for help, if you are not sure about something, it's always better to ask rather than making a mistake
+</span>
       </div>
     </div>
 
     <!-- Credit -->
     <div class="credit">Created by Paradox Maddy</div>
-
   </div>
 
   <script>
