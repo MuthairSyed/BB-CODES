@@ -8,20 +8,46 @@
   <style>
     * {
       user-select: none;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
-      margin: 0;
-      padding: 2rem;
       color: #333;
       text-align: center;
+      overflow: auto;
+      position: relative;
+      min-height: 100vh;
     }
 
     .container {
+      position: relative;
       max-width: 800px;
       margin: auto;
+      z-index: 1;
+      padding-top: 2rem;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .header img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
     }
 
     .card {
@@ -31,24 +57,23 @@
       padding: 2rem;
       margin-bottom: 2rem;
       position: relative;
-      transition: box-shadow 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      z-index: 2;
     }
 
     .card:hover {
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transform: scale(1.03);
     }
 
     .heading {
       font-size: 1.2rem;
       font-weight: bold;
       margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
     }
-
-    .approved { color: #61bd6d; }
-    .rejected { color: #b8312f; }
-    .reviewing { color: #fba026; }
-    .pov { color: #2969b0; }
-    .closed { color: #fba026; }
 
     .bbcode {
       white-space: pre-wrap;
@@ -130,14 +155,57 @@
     .selectable {
       user-select: text !important;
     }
+
+    /* Hover effects with updated background and text colors */
+    .rejected:hover {
+      background-color: #f8d7da; /* Light red */
+      color: #333; /* Dark text */
+    }
+
+    .approved:hover {
+      background-color: #d4edda; /* Light green */
+      color: #333; /* Dark text */
+    }
+
+    .reviewing:hover {
+      background-color: #fff3cd; /* Light yellow */
+      color: #333; /* Dark text */
+    }
+
+    .pov:hover {
+      background-color: #cce5ff; /* Light blue */
+      color: #333; /* Dark text */
+    }
+
+    .closed:hover {
+      background-color: #fff3cd; /* Light yellow */
+      color: #333; /* Dark text */
+    }
+
+    .locked:hover {
+      background-color: #333; /* Dark background */
+      color: #fff; /* White text */
+    }
+
+    .signature:hover {
+      background-color: #333; /* Dark background */
+      color: #fff; /* White text */
+    }
+
   </style>
 </head>
 <body oncontextmenu="return false">
   <div class="container">
 
+    <!-- Header with logo and title -->
+    <div class="header">
+      <img src="crplogo.png" alt="Crystal RP Logo" />
+      <h1>Crystal RP BBCode Guide</h1>
+    </div>
+
     <!-- Rejected -->
     <div class="card">
-      <div class="heading rejected">Rejected</div>
+      <div class="heading rejected">Incorrect Format</div>
       <button class="copy-btn" onclick="copyText('text1', this)">Copy to Clipboard</button>
       <div class="copy-success">Copied!</div>
       <div class="bbcode" id="text1">
@@ -217,7 +285,7 @@ Wrong section, this section is EN#3
 
     <!-- Locked -->
     <div class="card">
-      <div class="heading">Locked</div>
+      <div class="heading locked">Locked</div>
       <button class="copy-btn" onclick="copyText('text7', this)">Copy to Clipboard</button>
       <div class="copy-success">Copied!</div>
       <div class="bbcode" id="text7">
@@ -227,7 +295,7 @@ Wrong section, this section is EN#3
 
     <!-- Signature -->
     <div class="card">
-      <div class="heading">Signature</div>
+      <div class="heading signature">Signature</div>
       <div class="bbcode" id="text8">
 Signature<br><br>
 Click 
@@ -251,6 +319,7 @@ If you have questions, refer to any admin for help, if you are not sure about so
   </div>
 
   <script>
+    // Copy text function
     function copyText(id, btn) {
       const el = document.getElementById(id);
       const tempInput = document.createElement('textarea');
